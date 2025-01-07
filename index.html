@@ -5,63 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skyrim New Tab</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook&display=swap" rel="stylesheet">
     <style>
-        /* Add animation for background */
-        @keyframes skyrimSmoke {
+        @keyframes skyrimAurora {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
         body {
-            background: url('https://i.imgur.com/zxUbqCv.jpg') no-repeat center center fixed; /* Skyrim-themed image */
+            background: linear-gradient(120deg, rgba(0, 0, 0, 0.8), rgba(50, 50, 50, 0.8)), url('https://i.imgur.com/Ls9GHUV.gif') no-repeat center center fixed;
             background-size: cover;
+            animation: skyrimAurora 15s ease infinite;
             color: #eee;
-            font-family: 'UnifrakturMaguntia', serif;
+            font-family: 'UnifrakturCook', serif;
             margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            text-shadow: 1px 1px 5px #000;
         }
 
         .container {
-            background: rgba(0, 0, 0, 0.5); /* Reduced opacity for a more vibrant background */
-            padding: 30px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 40px;
             border-radius: 15px;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            width: 80%;
+            width: 100%;
             max-width: 1200px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+            height: 100vh;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.9);
         }
 
         .date-time {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
+            font-size: 3rem;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
         }
 
         .search-bar input {
             background-color: #222;
-            border: none;
+            border: 2px solid #555;
             color: #eee;
-            padding: 10px;
-            border-radius: 5px;
+            padding: 15px;
+            border-radius: 8px;
             width: 100%;
-            max-width: 400px;
-            font-size: 1.2rem;
+            max-width: 500px;
+            font-size: 1.5rem;
         }
 
         .bookmarks {
             display: flex;
-            justify-content: space-around;
-            margin-top: 30px;
+            justify-content: space-between;
+            margin-top: 40px;
             width: 100%;
-            border-top: 2px solid rgba(255, 255, 255, 0.3);
             padding-top: 20px;
         }
 
@@ -71,24 +71,25 @@
         }
 
         .bookmark-column h3 {
-            font-size: 1.8rem;
-            color: #bbb;
-            margin-bottom: 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            padding-bottom: 5px;
+            font-size: 2rem;
+            color: #ccc;
+            margin-bottom: 20px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 10px;
         }
 
         .bookmark-column a {
             display: block;
             color: #ccc;
             text-decoration: none;
-            margin-bottom: 10px;
-            transition: color 0.3s;
-            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            transition: color 0.3s, transform 0.2s;
         }
 
         .bookmark-column a:hover {
             color: #fff;
+            transform: scale(1.1);
         }
     </style>
 </head>
