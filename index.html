@@ -5,53 +5,133 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skyrim New Tab</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Add animation for background */
+        @keyframes skyrimSmoke {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body {
+            background: linear-gradient(120deg, #111, #333);
+            background-size: 200% 200%;
+            animation: skyrimSmoke 10s ease infinite;
+            color: #eee;
+            font-family: 'Trajan Pro', serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 80%;
+            max-width: 1200px;
+        }
+
+        .date-time {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .search-bar input {
+            background-color: #222;
+            border: none;
+            color: #eee;
+            padding: 10px;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 400px;
+            font-size: 1rem;
+        }
+
+        .bookmarks {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+            width: 100%;
+        }
+
+        .bookmark-column {
+            text-align: center;
+            width: 30%;
+        }
+
+        .bookmark-column h3 {
+            font-size: 1.5rem;
+            color: #bbb;
+            margin-bottom: 15px;
+        }
+
+        .bookmark-column a {
+            display: block;
+            color: #ccc;
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+
+        .bookmark-column a:hover {
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <div class="left-panel">
-            <div class="image-container">
-                <img src="skyrim_logo.png" alt="Skyrim Logo"> </div>
+        <div class="date-time">
+            <span id="date"></span>
+            <span id="time"></span>
         </div>
-        <div class="middle-panel">
-            <div class="top-bar">
-                <div class="date-time">
-                    <span id="date"></span>
-                    <span id="time"></span>
-                </div>
-                <div class="search-bar">
-                    <form action="https://www.google.com/search" method="get" target="_blank">
-                        <input type="text" name="q" placeholder="Search Google">
-                    </form>
-                </div>
+        <div class="search-bar">
+            <form action="https://www.google.com/search" method="get" target="_blank">
+                <input type="text" name="q" placeholder="Search Google">
+            </form>
+        </div>
+        <div class="bookmarks">
+            <div class="bookmark-column">
+                <h3>Social</h3>
+                <a href="https://www.facebook.com" target="_blank">Facebook</a>
+                <a href="https://www.twitter.com" target="_blank">Twitter</a>
+                <a href="https://www.reddit.com" target="_blank">Reddit</a>
+                <a href="https://discord.com" target="_blank">Discord</a>
+                <a href="https://www.instagram.com" target="_blank">Instagram</a>
             </div>
-            <div class="bookmarks">
-                <div class="bookmark-column">
-                    <h3>Social</h3>
-                    <a href="https://www.facebook.com" target="_blank">Facebook</a>
-                    <a href="https://www.twitter.com" target="_blank">Twitter</a>
-                    <a href="https://www.reddit.com" target="_blank">Reddit</a>
-                    <a href="https://discord.com" target="_blank">Discord</a>
-                    <a href="https://www.instagram.com" target="_blank">Instagram</a>
-                </div>
-                <div class="bookmark-column">
-                    <h3>Tools</h3>
-                    <a href="https://github.com" target="_blank">Github</a>
-                    <a href="#" target="_blank">Naturl (Placeholder)</a>
-                    <a href="#" target="_blank">Getintopc (Placeholder)</a>
-                    <a href="#" target="_blank">1337x (Placeholder)</a>
-                    <a href="https://www.canva.com" target="_blank">Canva</a>
-                </div>
-                <div class="bookmark-column">
-                    <h3>Media</h3>
-                    <a href="https://www.youtube.com" target="_blank">Youtube</a>
-                    <a href="https://www.google.com" target="_blank">Google</a>
-                    <a href="https://www.spotify.com" target="_blank">Spotify</a>
-                    <a href="#" target="_blank">Movie (Placeholder)</a>
-                    <a href="#" target="_blank">Anime (Placeholder)</a>
-                </div>
+            <div class="bookmark-column">
+                <h3>Tools</h3>
+                <a href="https://github.com" target="_blank">Github</a>
+                <a href="#" target="_blank">Naturl (Placeholder)</a>
+                <a href="#" target="_blank">Getintopc (Placeholder)</a>
+                <a href="#" target="_blank">1337x (Placeholder)</a>
+                <a href="https://www.canva.com" target="_blank">Canva</a>
+            </div>
+            <div class="bookmark-column">
+                <h3>Media</h3>
+                <a href="https://www.youtube.com" target="_blank">Youtube</a>
+                <a href="https://www.google.com" target="_blank">Google</a>
+                <a href="https://www.spotify.com" target="_blank">Spotify</a>
+                <a href="#" target="_blank">Movie (Placeholder)</a>
+                <a href="#" target="_blank">Anime (Placeholder)</a>
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const dateOptions = { weekday: 'short', month: 'short', day: 'numeric' };
+            const timeOptions = { hour: '2-digit', minute: '2-digit', hour12: true };
+
+            document.getElementById("date").textContent = now.toLocaleDateString('en-US', dateOptions);
+            document.getElementById("time").textContent = now.toLocaleTimeString('en-US', timeOptions);
+        }
+
+        setInterval(updateTime, 1000); // Update every second
+        updateTime(); // Initial call
+    </script>
 </body>
 </html>
